@@ -1,0 +1,134 @@
+{
+  "enable": {
+    "description": "启用每日推送",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后只有手动 /pixiv 指令可用"
+  },
+  "push_time": {
+    "description": "推送时间",
+    "type": "string",
+    "default": "08:30",
+    "hint": "24 小时制，格式 HH:MM，例如 08:30"
+  },
+  "targets": {
+    "description": "推送到哪些会话",
+    "type": "list",
+    "default": [],
+    "_special": "umo",
+    "hint": "点右侧按钮选择群或私聊；留空则不自动推送"
+  },
+  "count": {
+    "description": "推送张数",
+    "type": "int",
+    "default": 10,
+    "slider": { "min": 1, "max": 25, "step": 1 },
+    "hint": "排行榜一次最多返回 50 条，过滤 R18 后取前 N 条"
+  },
+  "mode": {
+    "description": "榜单类型",
+    "type": "string",
+    "default": "daily",
+    "options": ["daily", "weekly", "monthly", "rookie", "original"],
+    "labels": ["每日", "每周", "每月", "新人", "原创"]
+  },
+  "content": {
+    "description": "内容类型",
+    "type": "string",
+    "default": "all",
+    "options": ["all", "illust", "manga"],
+    "labels": ["全部", "插画", "漫画"]
+  },
+  "filter_r18": {
+    "description": "过滤 R18 与猎奇",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后会推送全部内容，注意群规"
+  },
+  "download_images": {
+    "description": "下载图片后发送",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭则只发标题和链接；开启更稳，但会占用磁盘"
+  },
+  "images_per_message": {
+    "description": "每条消息几张图",
+    "type": "int",
+    "default": 3,
+    "slider": { "min": 1, "max": 5, "step": 1 },
+    "hint": "一次发太多容易被平台风控"
+  },
+  "show_url": {
+    "description": "文字里附带作品链接",
+    "type": "bool",
+    "default": false,
+    "hint": "关闭可避免长文本被 AstrBot 的文本转图像截走"
+  },
+  "send_interval": {
+    "description": "消息间隔（秒）",
+    "type": "int",
+    "default": 2,
+    "slider": { "min": 1, "max": 10, "step": 1 }
+  },
+  "max_image_mb": {
+    "description": "单张图片大小上限（MB）",
+    "type": "int",
+    "default": 8
+  },
+  "image_dir": {
+    "description": "图片保存目录",
+    "type": "string",
+    "default": "",
+    "hint": "留空则用 data/plugin_data/astrbot_plugin_pixiv_daily/images；也可填绝对路径，如 D:/pixiv"
+  },
+  "keep_days": {
+    "description": "缓存保留天数",
+    "type": "int",
+    "default": 7,
+    "slider": { "min": 0, "max": 60, "step": 1 },
+    "hint": "超过这个天数的图片会被清理；0 表示不按时间清理"
+  },
+  "cleanup_enable": {
+    "description": "启用定时清理",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后只在推送结束后清理，不再单独定时"
+  },
+  "cleanup_time": {
+    "description": "定时清理时间",
+    "type": "string",
+    "default": "04:00",
+    "hint": "24 小时制，格式 HH:MM；建议放在凌晨，避开推送时间"
+  },
+  "max_cache_mb": {
+    "description": "缓存总容量上限（MB）",
+    "type": "int",
+    "default": 500,
+    "slider": { "min": 0, "max": 5000, "step": 50 },
+    "hint": "超过后从最旧的图片开始删；0 表示不限"
+  },
+  "timeout": {
+    "description": "请求超时（秒）",
+    "type": "int",
+    "default": 30
+  },
+  "proxy": {
+    "description": "HTTP 代理",
+    "type": "string",
+    "default": "",
+    "hint": "如 http://127.0.0.1:7890，留空则读环境变量 HTTPS_PROXY"
+  },
+  "proxy_fallback": {
+    "description": "代理失败时回退直连",
+    "type": "bool",
+    "default": true,
+    "hint": "代理端口没开时会自动再试一次直连；Pixiv 能直连的服务器建议保持开启"
+  },
+  "cookie": {
+    "description": "Pixiv Cookie（可选）",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "填写 PHPSESSID=xxx；不填也能拉公开榜单"
+  }
+}

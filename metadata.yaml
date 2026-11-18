@@ -1,0 +1,22 @@
+name: astrbot_plugin_pixiv_daily
+display_name: Pixiv 每日排行
+short_desc: 每天自动推送 Pixiv 排行榜画作
+desc: |
+  定时抓取 Pixiv 排行榜，过滤 R18 后把前 N 张画作推送到订阅的会话。
+
+  - 定时推送，时间可配（默认 08:30）
+  - 每日 / 每周 / 每月 / 新人 / 原创榜
+  - 自动过滤 R18 与猎奇内容
+  - 图片带 Referer 下载后发送，绕开防盗链
+  - 代理失败自动回退直连
+
+  指令：/pixiv、/pixiv 订阅、/pixiv 退订、/pixiv 状态、/pixiv 清理
+version: 1.0.0
+author: rice-eater24
+repo: https://github.com/rice-eater24/astrbot_plugin_pixiv_daily
+astrbot_version: ">=4.9.2"
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - telegram
+  - discord
